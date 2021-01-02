@@ -1,0 +1,46 @@
+{
+  "info": {
+    "name": "article"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "email": {
+      "type": "email"
+    },
+    "ohoto": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "file": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "author": {
+      "type": "string"
+    },
+    "translator": {
+      "type": "string"
+    },
+    "url": {
+      "type": "richtext"
+    },
+    "channels": {
+      "type": "string"
+    }
+  },
+  "connection": "default",
+  "collectionName": "articles"
+}
