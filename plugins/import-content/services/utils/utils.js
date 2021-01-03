@@ -51,13 +51,20 @@ const getItemsFromData = ({ dataType, body, options }) =>
       return resolve({ sourceType: "rss", items: feed.items });
     }
     if (dataType === "text/csv" || dataType === "application/vnd.ms-excel") {
+      console.log(".....body", body);
       const items = CsvParser(body, { ...options, columns: true });
+      console.log(".....body", items);
+
       return resolve({ sourceType: "csv", items });
     }
 
+    // <!--- json support ---> //
     if (dataType === "application/json") {
       const items = JSON.parse(body);
-      console.log("....items.....", items);
+      console.log(".........items..........", items);
+      // const arryOfItems = [{ ...items }];
+      //console.log(".........arryOfItems..........", arryOfItems);
+
       return resolve({ sourceType: "csv", items });
     }
 

@@ -6,6 +6,14 @@ type Article {
   translator: String
   url: String
   channels: String
+  description: String
+  name: String
+  another_string: String
+  date1: DateTime
+  date2: DateTime
+  date3: DateTime
+  name2: String
+  title2: String
   ohoto(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   file(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   id: ID!
@@ -23,6 +31,14 @@ input ArticleInput {
   translator: String
   url: String
   channels: String
+  description: String
+  name: String
+  another_string: String
+  date1: DateTime
+  date2: DateTime
+  date3: DateTime
+  name2: String
+  title2: String
 }
 
 type Book {
@@ -187,6 +203,14 @@ input editArticleInput {
   translator: String
   url: String
   channels: String
+  description: String
+  name: String
+  another_string: String
+  date1: DateTime
+  date2: DateTime
+  date3: DateTime
+  name2: String
+  title2: String
 }
 
 input editBookInput {
