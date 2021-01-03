@@ -27,6 +27,7 @@ const getDataFromUrl = url => {
 };
 const resolveDataFromRequest = async ctx => {
   const { source, type, options, data } = ctx.request.body;
+  console.log("..........ctx.request.body...........", ctx.request.body);
   switch (source) {
     case "upload":
       return { dataType: type, body: data, options };
@@ -50,12 +51,16 @@ const getItemsFromData = ({ dataType, body, options }) =>
       return resolve({ sourceType: "rss", items: feed.items });
     }
     if (dataType === "text/csv" || dataType === "application/vnd.ms-excel") {
-      const items = CsvParser(body, {
-        ...options,
-        columns: true
-      });
+      const items = CsvParser(body, { ...options, columns: true });
       return resolve({ sourceType: "csv", items });
     }
+
+    if (dataType === "application/json") {
+      const items = JSON.parse(body);
+      console.log("....items.....", items);
+      return resolve({ sourceType: "csv", items });
+    }
+
     reject({
       contentType: parsedContentType.toString()
     });
